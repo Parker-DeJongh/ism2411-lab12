@@ -70,3 +70,44 @@ with open("data/sales.csv", "r") as infile:
 
 print(f"Original rows: {original_count}")
 print(f"Rows written: {written_count}")
+
+print("--- Exercise 6: DictReader ---")
+
+dict_total_revenue = 0
+
+with open("data/sales.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        product = row["product"]
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+
+        line_total = price * quantity
+        dict_total_revenue += line_total
+
+print(f"Total revenue using DictReader: ${dict_total_revenue:.2f}")
+
+# csv.reader uses column position to access data, while csv.DictReader uses column names. This makes DictReader more readable and less error-prone.
+
+print("--- Exercise 7: Sales Summary by Product ---")
+
+sales_summary = {}
+
+with open("data/sales.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        product = row["product"]
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+
+        line_total = price * quantity
+
+        if product in sales_summary:
+            sales_summary[product] += line_total
+        else:
+            sales_summary[product] = line_total
+
+for product in sorted(sales_summary):
+    print(f"{product}: ${sales_summary[product]:.2f}")
