@@ -111,3 +111,12 @@ with open("data/sales.csv", "r") as file:
 
 for product in sorted(sales_summary):
     print(f"{product}: ${sales_summary[product]:.2f}")
+
+print("--- Exercise 8: Append Mode Log ---")
+
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+with open("data/run_log.txt", "a") as file:
+    file.write(f"{timestamp} - Total Revenue: ${total_revenue:.2f}\n")
+
+print("Run log updated successfully.")
