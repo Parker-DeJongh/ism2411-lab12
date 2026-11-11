@@ -1,4 +1,6 @@
-
+#Reflection:
+#1.) Python is able to process larger amounts of data than Excel, and it can handle more complex data processing tasks. However, Excel is helpful in manually reveiwing data and making charts.
+#2.) A business could use append-mode log to record the total revenue from sales data each time the script is run. This would allow them to track revenue over time and identify trends or patterns in their sales performance.
 import csv
 from datetime import datetime
 
